@@ -1,0 +1,18 @@
+# Dockerfile for upload service
+FROM alpine:latest
+
+# Install dependencies
+RUN apk add --no-cache curl git bash
+
+# Install GitHub CLI
+RUN curl -fsSL https://github.com/cli/cli/releases/download/v2.0.0/gh_2.0.0_linux_amd64.tar.gz -o gh.tar.gz \
+    && tar -xzf gh.tar.gz \
+    && mv gh_2.0.0_linux_amd64/bin/gh /usr/local/bin/gh \
+    && rm -rf gh.tar.gz gh_2.0.0_linux_amd64
+
+# Copy source code
+COPY . /app
+WORKDIR /app
+
+# Set entrypoint
+ENTRYPOINT ["sh", "upload.sh"]

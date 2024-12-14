@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and push Docker image
+      run: docker-compose up --build
+
+    - name: Generate Build Status Report
+      run: ./generate_report.sh
+
+    - name: Upload Build Status Report
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-report
+        path: build_report.html
