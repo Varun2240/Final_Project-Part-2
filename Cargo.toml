@@ -1,5 +1,9 @@
 [package]
+<<<<<<< HEAD
 name = "project-root"
+=======
+name = "cross_compile_demo"
+>>>>>>> ce351cf112d9ef4eb78ee1e4d6c1067760734779
 version = "0.1.0"
 edition = "2021"
 
