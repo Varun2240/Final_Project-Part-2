@@ -20,6 +20,8 @@ jobs:
       run: docker-compose up --build
 
     - name: Generate Build Status Report
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: ./generate_report.sh
 
     - name: Upload Build Status Report
