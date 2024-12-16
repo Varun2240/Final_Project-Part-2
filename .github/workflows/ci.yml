@@ -44,6 +44,9 @@ jobs:
     - name: Authenticate GitHub
       run: echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
 
+    - name: Set execute permissions for generate_report.sh
+      run: chmod +x ./generate_report.sh
+
     - name: Generate Build Status Report
       if: always()
       env:
