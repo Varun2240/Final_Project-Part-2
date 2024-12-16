@@ -47,6 +47,9 @@ jobs:
     - name: Set execute permissions for generate_report.sh
       run: chmod +x ./generate_report.sh
 
+    - name: Verify execute permissions
+      run: ls -l ./generate_report.sh
+
     - name: Generate Build Status Report
       if: always()
       env:
